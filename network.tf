@@ -18,7 +18,7 @@ module "base_vpc" {
         subnet-01 = [
             {
                 range_name    = "subnet-01-secondary-pods"
-                ip_cidr_range = "10.168.50.0/22"
+                ip_cidr_range = "10.168.50.0/24"
             },
             {
                 range_name    = "subnet-01-secondary-services"
