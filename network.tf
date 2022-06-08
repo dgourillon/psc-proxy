@@ -38,7 +38,7 @@ module "base_vpc" {
 
 resource "google_compute_router" "foobar" {
   name    = "proxy-router-nat"
-  network = module.base_vpc.name
+  network = module.base_vpc.network_name
   bgp {
     asn               = 64514
     advertise_mode    = "DEFAULT"
