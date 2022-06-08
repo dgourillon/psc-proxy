@@ -1,5 +1,5 @@
 
-variable "project_name" {
+variable "project_id" {
   description = "Project name for the PSC pproxy"
   type        = string
   default     = "prj"
