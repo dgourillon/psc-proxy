@@ -22,7 +22,7 @@ module "base_vpc" {
             },
             {
                 range_name    = "subnet-01-secondary-services"
-                ip_cidr_range = "10.168.50.0/27"
+                ip_cidr_range = "10.168.60.0/27"
             },
         ]
 
