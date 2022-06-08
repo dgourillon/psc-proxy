@@ -9,7 +9,7 @@ module "base_vpc" {
     subnets = [
         {
             subnet_name           = "subnet-01"
-            subnet_ip             = "10.168.0.0/24"
+            subnet_ip             = "10.168.0.0/25"
             subnet_region         = var.proxy_region
         }
     ]
@@ -17,8 +17,12 @@ module "base_vpc" {
     secondary_ranges = {
         subnet-01 = [
             {
-                range_name    = "subnet-01-secondary-01"
-                ip_cidr_range = "10.168.50.0/24"
+                range_name    = "subnet-01-secondary-pods"
+                ip_cidr_range = "10.168.50.0/22"
+            },
+            {
+                range_name    = "subnet-01-secondary-services"
+                ip_cidr_range = "10.168.50.0/27"
             },
         ]
 
