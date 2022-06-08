@@ -8,7 +8,7 @@ variable "project_id" {
 variable "network_name" {
   description = "Project name for the PSC pproxy"
   type        = string
-  default     = "prj"
+  default     = "proxy-network"
 }
 
 variable "proxy_region" {
