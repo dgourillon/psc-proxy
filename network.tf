@@ -47,3 +47,15 @@ resource "google_compute_router" "psc_proxy_router" {
   }
 }
 
+resource "google_compute_router_nat" "psc_proxy_router_nat" {
+  name                               = "proxy-nat"
+  router                             = google_compute_router.psc_proxy_router.name
+  region                             = var.proxy_region
+  nat_ip_allocate_option             = "AUTO_ONLY"
+  source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
+
+  log_config {
+    enable = true
+    filter = "ERRORS_ONLY"
+  }
+}
