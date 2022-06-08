@@ -40,6 +40,7 @@ resource "google_compute_router" "psc_proxy_router" {
   name    = "proxy-router-nat"
   network = module.base_vpc.network_name
   project = var.project_id
+  region = var.proxy_region
   bgp {
     asn               = 64514
     advertise_mode    = "DEFAULT"
