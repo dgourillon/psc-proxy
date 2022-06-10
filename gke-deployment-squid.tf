@@ -2,7 +2,7 @@ resource "kubernetes_storage_class" "standard" {
   metadata {
     name = "standard"
   }
-
+  storage_provisioner = "kubernetes.io/gce-pd"
   parameters = {
     fstype = "ext4"
     replication-type = "none"
