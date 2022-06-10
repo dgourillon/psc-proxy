@@ -23,7 +23,7 @@ resource "kubernetes_persistent_volume_claim" "squid_volume_claim" {
 
   spec {
     access_modes = ["ReadWriteOnce"]
-    storageClassName = "standard"
+    storage_class_name = "standard"
     resources {
       requests = {
         storage = "500M"
