@@ -1,3 +1,21 @@
+resource "kubernetes_storage_class" "standard" {
+  metadata {
+    name = "standard"
+  }
+
+  parameters = {
+    fstype = "ext4"
+    replication-type = "none"
+    type = "pd-standard"
+  }
+
+  reclaim_policy         = "Delete"
+  allow_volume_expansion = true
+  volume_binding_mode    = "Immediate"
+}
+
+
+
 resource "kubernetes_persistent_volume_claim" "squid_volume_claim" {
   metadata {
     name = "squid-volume-claim"
@@ -5,7 +23,7 @@ resource "kubernetes_persistent_volume_claim" "squid_volume_claim" {
 
   spec {
     access_modes = ["ReadWriteOnce"]
-
+    storageClassName = "standard"
     resources {
       requests = {
         storage = "500M"
