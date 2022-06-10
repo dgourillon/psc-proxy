@@ -1,18 +1,3 @@
-resource "kubernetes_storage_class" "standard" {
-  metadata {
-    name = "standard"
-  }
-  storage_provisioner = "kubernetes.io/gce-pd"
-  parameters = {
-    fstype = "ext4"
-    replication-type = "none"
-    type = "pd-standard"
-  }
-
-  reclaim_policy         = "Delete"
-  allow_volume_expansion = true
-  volume_binding_mode    = "Immediate"
-}
 
 
 resource "kubernetes_persistent_volume" "squid_volume" {
