@@ -15,6 +15,24 @@ resource "kubernetes_storage_class" "standard" {
 }
 
 
+resource "kubernetes_persistent_volume" "squid_volume" {
+  metadata {
+    name = "terraform-example"
+  }
+  spec {
+    capacity = {
+      storage = "2Gi"
+    }
+    access_modes = ["ReadWriteMany"]
+    persistent_volume_source {
+      gce_persistent_disk {
+        fs_type = "xfs"
+        pd_name = "squid-pd"
+      }
+    }
+  }
+}
+
 
 resource "kubernetes_persistent_volume_claim" "squid_volume_claim" {
   metadata {
@@ -23,11 +41,11 @@ resource "kubernetes_persistent_volume_claim" "squid_volume_claim" {
 
   spec {
     access_modes = ["ReadWriteOnce"]
-    storage_class_name = "standard"
     resources {
       requests = {
         storage = "500M"
       }
+    volume_name = "${kubernetes_persistent_volume.squid_volume.metadata.0.name}"  
     }
 
 
