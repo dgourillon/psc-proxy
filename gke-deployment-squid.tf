@@ -30,7 +30,7 @@ resource "kubernetes_persistent_volume_claim" "squid_volume_claim" {
       }
     }
 
-    storage_class_name = "pd-standard"
+
   }
 }
 
