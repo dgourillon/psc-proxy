@@ -1,6 +1,6 @@
 
 # GKE cluster
-resource "google_container_cluster" "primary" {
+resource "google_container_cluster" "psc-cluster" {
   name     = "${var.project_id}-gke"
   location = var.proxy_region
   
