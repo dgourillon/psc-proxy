@@ -45,9 +45,9 @@ resource "kubernetes_persistent_volume_claim" "squid_volume_claim" {
       requests = {
         storage = "500M"
       }
-    volume_name = "${kubernetes_persistent_volume.squid_volume.metadata.0.name}"  
+    
     }
-
+    volume_name = "${kubernetes_persistent_volume.squid_volume.metadata.0.name}"  
 
   }
 }
